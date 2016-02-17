@@ -1,11 +1,10 @@
 # Up and Running
 
-We’ll start our journey with Rust by talking about the absolute basics —
-concepts that appear in almost every programming language. Many programming
-languages have lots in common at their core. None of the concepts presented are
-unique to Rust, but we’ll cover Rust’s particular syntax and conventions around
-these common concepts.
+Wir werden unsere Reise mir Rust beginnen,indem wir über die absoluten Grundlagen sprechen —
+Konzepte die in fast jeder Programmiersprache vorkommen. Viele Programmiersprachen
+haben im Kern eine Menge gemeinsam. Keine der vorgestellten Konzepte sind
+eine Eigenart von Rust, aber wir werden Rusts besondere Syntax und Konventionen bezüglich
+dieser gebräuchlichen Konzepte abdecken.
 
-If you want to skip this section, you can, but you may end up coming back later
-to find out small details. These foundations will be in every single useful
-Rust program, and learning them gives us a strong core to start from.
+Falls du diesen Abschnitt übrspringen willst, kannst du das tun, aber es könnte sein, dass du später zurückkommst um kleine Details herauszufinden. Diese Grundlagen werden in jedem einzelnen nützlichen
+Rust Programm vorkommen und sie zu lernen gibt uns einen guten Startpunkt.
