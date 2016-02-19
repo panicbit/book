@@ -8,4 +8,16 @@
 <dt>Variable Bindings
 <dd>Variablen-Bindungen
 
+<dt>Type Annotations
+<dd>Typ-Annotationen
+
+<dt>Compile time
+<dd>Übersetzungszeit
+
+<dt>Type inference
+<dd>Typableitung
+
+<dt>(im)mutable
+<dd>(un-)veränderbar
+
 </dl>
