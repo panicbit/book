@@ -1,22 +1,19 @@
-# Variable Bindings
+# Variablen-Bindungen
 
-The foundation of virtually every program is the ability to store and modify
-data. Rust programs are no different. Let’s start with a short example.
+Die Grundlage von praktisch jedem Programm ist die Fähigkeit Daten zu speichern und zu verändern. Rust Programme sind da nicht anders.
+Lass uns mit einem kurzen Beispiel anfangen.
 
-## The basics of bindings
+## Die Grundlagen von Variablen-Bindungen
 
-First, we’ll generate a new project with Cargo. Open a terminal, and navigate
-to the directory where you’d like to keep your projects. From there, let’s
-generate a new project:
+Zuerst werden wir ein neues Projekt mit Cargo erzeugen. Öffne ein Terminal und navigiere in das Verzeichnis wo du deine Projekte aufbewahren möchtest.
+Lass uns jetzt hier ein neues Projekt erzeugen:
 
 ```bash
 $ cargo new --bin bindings
 $ cd bindings
 ```
 
-This creates a new project, ‘bindings’, and sets up our `Cargo.toml` and
-`src/main.rs` files. As we saw in “Hello, World!”, Cargo will generate these
-files and create a little ‘hello world’ program for us:
+Dies erstellt ein neues Projekt namens „bindings“ und erzeugt unsere `Cargo.toml` und `src/main.rs` Dateien. Wie wir in „Hello, World!“ sahen, wird Cargo diese Dateien generieren und ein kleines ‘hello world’ Programm für uns erzugen:
 
 ```rust
 fn main() {
@@ -24,7 +21,7 @@ fn main() {
 }
 ```
 
-Let’s replace that program with this one:
+Lass uns das Programm durch folgendes ersetzen:
 
 ```rust
 fn main() {
@@ -34,7 +31,7 @@ fn main() {
 }
 ```
 
-And finally, run it:
+Und nun führe es aus:
 
 ```bash
 $ cargo run
@@ -43,61 +40,45 @@ $ cargo run
 The value of x is: 5
 ```
 
-If you see an error instead, double check that you have copied the program
-exactly as written. Let’s break this down, line by line.
+Wenn du stattdessen einen Fehler bekommst, dann stelle sicher, dass du das Programm exakt so wie hier dargestellt kopiert hast.
+Lass es uns Zeile für Zeile durchgehen.
 
 ```rust,ignore
 fn main() {
 ```
 
-The `main()` function is the entry point of every Rust program. We’ll talk more
-about functions in the next section, but for now, all we need to know is that
-this is where our program begins. The opening curly brace, `{`, indicates the
-start of the function’s body.
+Die `main()` Funktion ist der Einsprungspunkt eines jeden Rust Programmes. Wir werden im nächsten Abschnitt mehr über Funktionen reden, aber zunächst ist alles was wir wissen müssen, dass unser Programm dort beginnt. Die öffnende geschweifte Klammer, `{`, markiert den Anfang des Funktionskörpers.
 
 ```rust,ignore
     let x = 5;
 ```
 
-This is our first ‘variable binding’, which we create with a ‘`let` statement’.
+Dies ist unsere erste „Variablen-Bindung“, welche wir mit einer „`let` Anweisung“ erzeugen.
 
-This `let` statement has this form:
+Diese `let` Anweisung hat folgende Form:
 
 ```text
-let NAME = EXPRESSION;
+let NAME = AUSDRUCK;
 ```
 
-A `let` statement first evaluates the `EXPRESSION`, and then binds the
-resulting value to `NAME` so that it can be referred to later in the program.
-In our simple example, the expression was already a value, 5, but we could
-achieve the same effect with:
+Eine `let` Anweisung wertet zuerst den `AUSDRUCK` aus und bindet den sich ergebenden Wert an `NAME`, sodass dieser später im Programm wiederverwendet werden kann. In unserem einfachen Beispiel war der Ausdruck bereits ein Wert, nämlich `5`, aber wir könnten hiermit den selben Effekt erreichen:
 
 ```rust
 let x = 2 + 3;
 ```
 
-In general, `let` statements work with patterns; a name is a particularly
-humble form of pattern. Patterns are a big part of Rust, we’ll see more complex
-and powerful patterns as we go along.
+Im Allgemeinen arbeiten `let` Ausdrücke mit Mustern; ein Name ist eine besonders einfache Form eines Musters. Muster sind ein großer Teil von Rust, wir werden nach und nach noch komplexere und mächtigere Muster sehen.
 
-Before we do that, though, let’s finish investigating this example. Here’s the
-next line:
+Doch lass uns zuerst noch dieses Beispiel untersuchen. Hier ist die nächste Zeile:
 
 ```rust,ignore
     println!("The value of x is: {}", x);
 ```
 
-The `println!` macro prints text to the screen. We can tell that it’s a macro
-due to the `!`. We won’t learn how to write macros until much later in the
-book, but we’ll use macros provided by the standard library throughout. Every
-time you see a `!`, remember that it signifies a macro. Macros can add new
-syntax to the language, and the `!` is a reminder that things may look slightly
-unusual.
+Das `println!` Makro gibt Text auf dem Bildschirm aus. Wir wissen durch das `!`, dass es sich um ein Makro handelt. Wir werden in diesem Buch erst sehr spät lernen wie man Makros schreibt, aber wir werden durchgehend Makros verwenden, welche von der Standardbibliothek bereitgestellt werden. Jedes mal, wenn du ein `!` siehst, denke daran, dass es ein Makro kennzeichnet. Makros können der Sprache neue Syntax hinzufügen und das `!` dient als Erinnerung daran, dass diese Sachen manchmal etwas ungewöhnlich aussehen können.
 
-`println!`, specifically, has one required argument, a ‘format string’, and
-zero or more optional arguments. The format string can contain the special text
-`{}`. Each instance of `{}` corresponds to an additional argument. Here’s an
-example:
+`println!`, im Detail, hat einen benötigten Parameter, den ‘format string’, und keine oder mehr optionale Parameter. Der format String kan den speziellen Text `{}` enthalten. Jedes Vorkommen von `{}` entspricht einem zusätzlichen Parameter.
+Hier ein Beispiel:
 
 ```rust
 let x = 2 + 3;
@@ -105,29 +86,26 @@ let y = x + 5;
 println!("The value of x is {}, and the value of y is {}", x, y);
 ```
 
-You can think of `{}` as little crab pincers, holding the value in place. This
-placeholder has a number of more advanced formatting options that we’ll discuss
-later.
+Du kannst dir die `{}` wir kleine Krabbenscheren vorstellen, die den Wert festhalten. Dieser Platzhalter hat eine Reihe erweiterter Formatierungsoptionen, welche wir später diskutieren.
 
 ```rust,ignore
 }
 ```
 
-Finally, a closing curly brace matches up with the opening curly brace that
-declared the `main()` function, and declares its end.
+Zum Schluss eine schließende geschweifte Klammer, welche zu der öffnenden geschweiften Klammer der `main()` Funktionsdeklaration passt und ihr Ende festlegt.
 
-This explains our output:
+Das erklärt unsere Ausgabe:
 
 ```text
 The value of x is: 5
 ```
 
-We assign `5` to a binding, `x`, and then print it to the screen with
-`println!`.
+Wir weisen `5` einer Bindung `x` zu und geben sie dann mit `println!` auf dem Bildschirm aus. We assign `5` to a binding, `x`, and then print it to the screen with `println!`.
 
-## Multiple binding
+## Mehrere Bindungen
 
-Let’s try a more complex pattern. Change our example program to this:
+Lass uns nun ein komplexeres Muster ausprobieren.
+Ändere unser Beispielprogramm so ab:
 
 ```rust
 fn main() {
@@ -138,7 +116,7 @@ fn main() {
 }
 ```
 
-And run it with `cargo run`:
+Und führe es mit `cargo run` aus:
 
 ```text
 $ cargo run
@@ -148,20 +126,19 @@ The value of x is: 5
 The value of y is: 6
 ```
 
-We’ve created two bindings with one `let`! Here’s our pattern:
+Wir haven zwei Bindungen mit einem `let` erzeugt! Hier ist unser Muster:
 
 ```text
 (x, y)
 ```
 
-And here’s the value:
+Und hier ist der Wert:
 
 ```text
 (5, 6)
 ```
 
-As you can see, the two line up visually, and so `let` binds `5` to `x` and `6`
-to `y`. We could have used two `let` statements as well:
+Wie du sehen kannst sind diese beiden optisch sehr ähnlich, so bindet `let` `5` an `x` und `6` an `y`. Wir hätten auch zwei `let` Anweisungen verwenden können:
 
 ```rust
 fn main() {
@@ -170,21 +147,14 @@ fn main() {
 }
 ```
 
-In simple cases like this, two `let`s may be clearer, but in others, creating
-multiple bindings at once is nice. As we become more proficient in Rust, we’ll
-figure out which style is better, but it’s mostly a judgement call.
+In einfachen Fällen wie diesen sind zwei `let`s klarer, aber in anderen Fällen ist es praktisch mehrere Bindungen auf einmal zu erstellen. Während wir Rust immer besser beherrschen, werden wir herausfinden welcher Stil besser ist, aber meistens ist es eine Frage des Ermessens.
 
-## Type annotations
+## Typ-Annotationen
 
-You may have noticed that we didn’t declare the type of `x` or `y` in our
-previous examples. Rust is a *statically typed* language, which means that at
-compile time, we must know the types of all bindings. But annotating every
-single binding with a type can feel like busywork, and make code noisy. To
-solve this issue, Rust uses ‘type inference’, meaning that it attempts to infer
-the types of your bindings.
+Du hast vielleicht bemerkt, dass wir den Typ von `x` oder `y` in unseren vorherigen Beispielen nicht deklariert haben. Rust ist eine *statische typisierte* Sprache, was bedeutet, dass wir die Typen aller Bindungen zur Übersetzungszeit kennen müssen. Aber jede einzelne Bindung mit einem Typ zu annotieren fühlt sich manchmal nach einer sinnlosen Beschäftigung an und kann den Code unleserlich machen. Um das zu lösen verwendet Rust Typableitung, was bedeutet dass der Compiler versucht die Typen deiner Bindungen abzuleiten.
 
-The primary way that the type is inferred is by looking at how it is used.
-Let’s look at the example again:
+Das Ableiten des Types erfolgt hauptsächlich dadurch, indem geschaut wird wie er verwendet wird.
+Schauen wir uns das Beispiel nochmal an:
 
 ```rust
 fn main() {
@@ -192,11 +162,10 @@ fn main() {
 }
 ```
 
-When we bind `x` to `5`, the compiler knows that `x` should be a numeric type.
-Without any other information, it defaults to `i32`, a thirty-two bit integer
-type. We’ll talk more about Rust’s basic types in section 3.3.
+Wenn wir `x` an `5` binden, dann weiß der Compiler, dass `x` ein numerischer Type sein sollte. Ohne irgendwelche weiteren Information wird standardmäßig `i32` angenommen, ein 32-bit ganzzahliger Typ.
+Wir werden mehr über Rusts Grundlegende Typen in Abschnitt 3.3 erzählen.
 
-Here’s what a `let` statement with a ‘type annotation’ looks like:
+So sieht eine `let` Anweisung mit einer ‘Typ-Annotation’ aus:
 
 ```rust
 fn main() {
@@ -204,15 +173,13 @@ fn main() {
 }
 ```
 
-We can add a colon, followed by the type name. Here’s the structure of a `let`
-statement with a type annotation:
+Wir können ein Doppelpunkt, gefolgt von dem Typnamen, hinzufügen. Hier ist die Struktur einer `let` Anweisung mit Typ-Aannotation:
 
 ```text
-let PATTERN: TYPE = VALUE;
+let MUSTER: TYP = WERT;
 ```
 
-Note that the colon and the `TYPE` go _after_ the `PATTERN`, not in the pattern
-itself. As an example, here’s our more complex pattern with two bindings:
+Beachte, dass der Doppelpunkt und der `TYP` _nach_ dem `MUSTER` erscheinen, jedoch nicht im Muster selbst.
 
 ```rust
 fn main() {
@@ -220,13 +187,12 @@ fn main() {
 }
 ```
 
-Just like we match up the `VALUE` with the `PATTERN`, we match up the `TYPE`
-with the `PATTERN`.
+Genauso wie `WERT` und `MUSTER` strukturell zueinander passen, so passt auch der `TYP` strukturell zu dem `MUSTER`.
 
-## Delayed Initialization
+## Verzögerte Initialisierung
 
-We do not have to provide bindings with an initial value, and can assign it
-later. Try this program:
+Wir müssen Bindungen keinen anfänglichen Wert geben und können später einen zuweisen.
+Probier dieses Programm aus:
 
 ```rust
 fn main() {
@@ -238,7 +204,7 @@ fn main() {
 }
 ```
 
-And run it with `cargo run`:
+Und starte es mit `cargo run`:
 
 ```text
 $ cargo run
@@ -247,9 +213,7 @@ $ cargo run
 The value of x is: 5
 ```
 
-It’s all good. This raises a question, though: what if we try to print out a
-binding before we declare a value? Here’s a program that demonstrates this
-question:
+Alles klar. Dies bringt allerdings eine Frage auf: Was passiert, wenn wir versuchen `x` auszugeben bevor wir einen Wert zuweisen? Hier ein Programm, was das mal ausprobiert:
 
 ```rust,ignore
 fn main() {
@@ -261,7 +225,7 @@ fn main() {
 }
 ```
 
-We can find out the answer with `cargo run`:
+Wir bekommen unsere Antwort mit `cargo run`:
 
 ```text
    Compiling bindings v0.1.0 (file:///projects/bindings)
@@ -278,27 +242,18 @@ Could not compile `bindings`.
 To learn more, run the command again with --verbose.
 ```
 
-An error! The compiler won’t let us write a program like this. This is our
-first example of the compiler helping us find an error in our program.
-Different programming languages have different ways of approaching this
-problem. Some languages always initialize values with some sort of default.
-Other languages leave the value uninitialized, and make no promises about what
-happens if you try to use something before initialization. Rust chooses
-something else: error and force the programmer to explain what they want. We
-must do some sort of initialization before we can use `x`.
+Ein Fehler! Der Compiler lässt uns ein solches Programm nicht schreiben. Dies ist unser erstes Beispiel wo der Compiler uns hilft einen Fehler in unserem Programm zu finden. Verschiedene Programmiersprachen haben verschiedene Herangehensweisen für dieses Problem. Manche Sprachen initialisieren immer mit einem Standardwert. Andere Sprachen lassen den Wert uninitialisiert und machen keine Versprechungen darüber was passiert, wenn man ihn vor seiner Initialisierung verwendet. Rust wählt einen anderen Weg: Ein Fehler wird angezeigt und der Programmier wird gezwungen zu erklären was er tun will. Wir müssen irgendeine Art von Initialisierung vornehmen bevor wir `x` benutzen können.
 
-### Extended error explanations
+### Detaillierte Fehler Erklärungen
 
-There’s one more interesting part of this error message:
+Es gibt noch etwas interessantes bei dieser Fehlermeldung: 
 
 ```text
 src/main.rs:4:39: 4:40 help: run `rustc --explain E0381` to see a detailed explanation
 ```
 
-We can see an extended explanation by passing the `--explain` flag to `rustc`.
-Not every error has a longer explanation, but many of them do. These extended
-explanations try to show off common ways that the error occurs, and common
-solutions to the issue. Here’s `E0381`:
+Wir können eine detaillierte Erklärung sehen indem wir den `--explain` Schalter an `rustc` übergeben. Nicht jeder Fehler hat eine längere Erklärung, aber viele haben eine. Diese detaillierten Erklärungen versuchen häufig auftretende Problemsituationen und Lösungswege zu zeigen.
+Hier ist `E0381`:
 
 ```bash
 $ rustc --explain E0381
@@ -312,13 +267,12 @@ To fix this, ensure that any declared variables are initialized before being
 used.
 ```
 
-These explanations can really help if you’re stuck on an error. The compiler is
-your friend, and is here to help.
+Diese Erklärungen können wirklich hilfreich sein, wenn du bei einem Problem feststeckst. Der Compiler ist dein Freund und da um zu helfen.
 
-## Mutable bindings
+## Veränderbare Bindungen
 
-What about changing the value of a binding? Here’s another sample program that
-asks this question:
+Was ist, wenn wir den Wert einer Bindung ändern wollen?
+Hier ein weiteres Beispielprogramm, welches diese Frage aufwirft:
 
 ```rust,ignore
 fn main() {
@@ -330,7 +284,7 @@ fn main() {
 }
 ```
 
-`cargo run` has the answer for us:
+`cargo run` hat die Antwort für uns:
 
 ```bash
 $ cargo run
@@ -344,10 +298,7 @@ src/main.rs:2     let x = 5;
                       ^
 ```
 
-The error mentions `re-assigment of immutable variable`. That’s right: bindings
-are immutable. But they’re only immutable by default. In a pattern, when we’re
-creating a new name, we can add `mut` in front to make the binding a mutable
-one. Here’s an example:
+Der Fehler erwähnt `re-assigment of immutable variable`, also „Neuzuweisung einer unveränderbaren Variable“. Ganz recht: Bindungen sind unveränderbar. Aber sie sind nur standardmäßig unveränderbar. Wenn wir in einem Muster einen neuen Namen erzeugen, dann können wir `mut` davor schreiben um die Bindung veränderbar zu machen. Hier ein Beispiel:
 
 ```rust
 fn main() {
@@ -361,7 +312,7 @@ fn main() {
 }
 ```
 
-Running this, we get:
+Wenn wir das ausführen erhalten wir:
 
 ```bash
 $ cargo run
@@ -371,10 +322,7 @@ The value of x is: 5
 The value of x is: 6
 ```
 
-We can now change the value that `x` binds to. Note that the syntax is not `let
-mut` exactly; it’s using `mut` in a pattern. This becomes more obvious with our
-`()` pattern:
-
+Wir können nun den Wert der an `x` gebunden wird verändern. Beachte, dass `let mut` keine spezielle Syntax, sondern einfach eine `let` Anweisung mit einem Muster, welches `mut` verwendet. Dies wird deutlicher durch unser `()` Muster:
 
 ```rust,ignore
 fn main() {
@@ -385,7 +333,7 @@ fn main() {
 }
 ```
 
-The compiler will complain about this program:
+Der Compiler wird sich über dieses Programm beschweren:
 
 ```bash
 $ cargo build
@@ -399,13 +347,11 @@ src/main.rs:2     let (mut x, y) = (5, 6);
                               ^
 ```
 
-It’s fine with re-assigning `x`, but not `y`. The `mut` only applies to the
-name that follows it, not the whole pattern.
+Es ist in Ordnung `x` erneut zuzuweisen, aber nicht `y`. Das `mut` wird nur auf dem ihm nachfolgendem Namen angewendet, nicht auf das gesamte Muster.
 
-### Reassignment, not mutation
+### Neuzuweisung, nicht Veränderung
 
-There is one subtlety we haven’t covered yet: `mut` allows you to mutate _the
-binding_, but not _what the binding binds to_. In other words:
+Es gibt eine Feinheit, die wir noch nicht behandelt haben: `mut` erlaubt einem _die Bindung_ zu verändern, jedoch nicht _das, woran die Variable bindet_. In andere Worten:
 
 ```rust
 fn main() {
@@ -415,20 +361,12 @@ fn main() {
 }
 ```
 
-This is not changing the value that `x` is bound to, but creating a new value,
-`6`, and changing the binding to bind to it instead. It’s a subtle but
-important difference. Well, for now, it does not make a lot of difference, but
-when our programs get more complex, it will. Specifically, passing arguments to
-functions will illustrate the difference. We’ll talk about that in the next
-section, when we discuss functions.
+Dies ändert nicht den Wert, der an `x` gebunden ist, sondern erzeugt einen neuen Wert, `6`, und ändert die Bindung, sodass an den neuen Wert gebunden wird. Das ist ein feiner, aber wichtiger Unterschied. Nun, im Moment macht es noch keinen so großen Unterschied, aber, wenn unser Programm komplexer wird, dann wird es das. Besonders das übergeben von Parametern an Funktionen wird den Unterschied verdeutlichen. Wir werden darüber im nächsten Abschnitt, wo es dann um Funktionen geht, sprechen.
 
-## Scope
+## Geltungsbereich
 
-Variable bindings have a ‘scope’ in which they’re valid. That scope begins from
-the point at which the binding is declared, and ends at the end of the next
-block of code. We can only access bindings which are ‘in scope’. We cannot
-access them ‘before they come into scope’ or ‘after they go out of scope’.
-Here’s an example:
+Variablenbindungen haben einen Geltungsbereich in dem sie gültig sind. Der Geltungsbereich beginnt an dem Punkt, wo die Bindung deklariert ist, und endet am Ende des nächsten Code-Blocks. Wir können nur auf Bindungen zugreifen, welche sich im Geltungsbereich befinden. Wir können nicht nicht auf sie zugreifen bevor sie in den Geltungsbereich gelangen oder nachdem sie den Geltungsbereich verlassen.
+Hier ist ein Beispiel:
 
 ```rust
 fn main() {
@@ -443,7 +381,7 @@ fn main() {
 }
 ```
 
-We can create arbitrary scopes through the use of `{` and `}`:
+Wir können beliebige Geltunsbereiche mithilfe von `{` und `}` erstellen:
 
 ```rust
 fn main() {
@@ -469,13 +407,11 @@ fn main() {
 }
 ```
 
-What bindings are in and out of scope will become much more important later,
-once we learn about ‘references’ and ‘traits’.
+Welche Bindungen im oder nicht im Geltungsbereich sind wird später noch viel wichtiger sein, sobald wir über „Referenzen“ und „Traits“ erfahren haben.
 
-## Shadowing
+## Überdeckung
 
-A final thing about bindings: they can ‘shadow’ previous bindings with the same
-name. Here’s a sample program:
+Noch eine letzte Sache über Bindungen: Sie können vorherige Bindungen mit dem selben Namen „überdecken“. Hier ein Beispielprogramm:
 
 ```rust
 fn main() {
@@ -486,7 +422,7 @@ fn main() {
 }  
 ```
 
-Running it, we can see the shadowing in action:
+Wenn wir es ausführen, können wir das Überdecken in Aktion sehen:
 
 ```text
 src/main.rs:2:9: 2:10 warning: unused variable: `x`, #[warn(unused_variables)] on by default
@@ -496,13 +432,7 @@ src/main.rs:2     let x = 5;
 The value of x is: 6
 ```
 
-There are two interesting things in this output. First, Rust will compile and
-run this program, no problem. And as we can see, the value of `x` is `6`. But
-we didn’t declare `x` as mutable. Instead, we declared a _new_ binding that is
-_also_ named `x`, and gave it a new value. The older value that we bound `x` to
-is inaccessible as soon as the new `x` is declared. This can be useful if you’d
-like to perform a few transformations on a value, and leave it immutable. For
-example:
+Es gibt zwei interessante Dinge in dieser Ausgabe. Zunächst einmal wird Rust das Programm kompilieren und ausführen, kein Problem. Und wie wir sehen können, ist der Wert von `x` gleich `6`. Aber wir haben `x` nicht als veränderbar deklariert. Stattdessen haben eine _neue_ Bindung deklariert, welche _ebenfalls_ `x` heißt, und haven dieser einen neuen Wert gegeben. Auf den älten Wert, den wir an `x` gebunden haben, kann nicht mehr zugegriffen werden sobald das neue `x` deklariert wurde. Dies kann nützlich sein, falls du vorhast ein paar Transformationen auf einen Wert anzuwenden und ihn unveränderbar zu lassen. Zum Beispiel:
 
 ```rust
 fn main() {
@@ -514,7 +444,7 @@ fn main() {
 }
 ```
 
-This will print:
+Der Code gibt folgendes aus:
 
 ```bash
    Compiling bindings v0.1.0 (file:///projects/bindings)
@@ -522,10 +452,7 @@ This will print:
 The value of x is: 12
 ```
 
-This lets us modify `x`, but not deal with mutation. This is nice because we
-know that the compiler will let us know if we try to modify it later. Let’s
-assume that after we calculate `12`, we don’t want to modify `x` again. If we
-had written this program in a mutable style, like this:
+Dies erlaubt uns `x` zu modifizieren ohne den Wert tatsächlich zu verändern. Das ist super, weil wir wissen, dass der Compiler es uns wissen lässt, wenn wir den Wert später versuchen zu verändern. Nehmen wir mal an, dass wir `x` nicht mehr verändern wollen, nachdem wir `12` ausgerechnet haben. Wenn wir einen „veränderbaren Stil“, wie folgt verwenden würden:
 
 ```rust
 fn main() {
@@ -541,8 +468,7 @@ fn main() {
 }
 ```
 
-Rust is happy to let us mutate it again, to `15`. A similar program in our
-immutable style will let us know about that accidental mutation, however:
+Dann ließe uns Rust den Wert ohne Widerworte auf `15` setzen. Ein ähnliches Programm in unserem „unveränderbaren Stil“ setzt uns stattdessen über diese unbeabsichtigte Veränderung in Kenntnis:
 
 ```rust,ignore
 fn main() {
@@ -558,7 +484,7 @@ fn main() {
 }
 ```
 
-If we try to compile, we get an error:
+Wenn wir versuchen das zu kompilieren erhalten wir nämlich einen Fehler:
 
 ```bash
 $ cargo build
@@ -574,41 +500,29 @@ error: aborting due to previous error
 Could not compile `bindings`.
 ```
 
-Exactly what we wanted.
+Genau was wir wollten.
 
-Shadowing can take some time to get used to, but it’s very powerful, and works
-well with immutability.
+Es kann etwas dauern bis man sich an Überdeckung gewöhnt hat, aber sie ist sehr mächtig und arbeitet gut mit Unveränderbarkeit zusammen.
 
-There was one more thing we should talk about in the output from compiling our
-initial program. It’s this part:
+Es gab noch einen weiteren Teil in der Compiler-Ausgabe unseres ursprünglichen Programme über den wir sprechen sollten:
 
 ```text
 src/main.rs:2:9: 2:10 warning: unused variable: `x`, #[warn(unused_variables)] on by default
 ```
 
-Here’s the two lines of relevant code:
+Hier sind nochmal die beiden relevanten Code-Zeilen:
 
 ```rust
 let x = 5;
 let x = 6;
 ```
 
-Rust knows that we shadowed `x`, but we never ended up using the initial value.
-This isn’t _wrong_, exactly, it just may not have been what we wanted. In this
-case, the compiler issues a ‘warning’, but still compiles our program. The
-`#[warn(unused_variables)]` syntax is called an ‘attribute’, which we’ll
-discuss in a later section. More specifically, a warning like this is called a
-‘lint’, which is an old term for the bits of sheep’s wool that you wouldn’t
-want to put in cloth. Similarly, this lint is telling us that we may have an
-extra bit of code we don’t need. Our program would work just fine without it.
-It’s worth listening to these warnings, and fixing the problems they point out.
-They can be signs of a larger problem. In this case, we may not have realized
-that we were shadowing `x`.
+Rust weiß, dass wir `x` überdecken, aber den ursprünglichen Wert niemals verwendet haben. Das ist genau genommen nicht _falsch_, es könnte jedoch sein, dass das so nicht von uns gewollt war. In diesem Fall gibt der Compiler eine „Warnung“ aus, aber kompiliert trotzdem unser Programm.
+Die `#[warn(unused_variables)]` Syntax wird „Attribut“ genannt und werden in einem späteren Abschnitt behandelt. Genauer gesagt wird eine solche Warnung „lint“ („Fussel”) genannt, was ein alter englischer Begriff für einen Teil Schafwolle ist, den man nicht in seine Kleidung stecken wollen würde. Gleichermaßen sagt uns dieses Lint, dass wir ein Stück extra Code haben, den wir wir nicht brauchen. Unser Programm würde auch genauso gut ohne ihn funktionieren. Es lohnt sich auf diese Warnungen zu hören und die Probleme, auf die sie hinweisen, zu beheben. Sie können ein Zeichen eines größeren Problemes sein. In diesem Fall könnten wir vielleicht garnicht realisiert haben, dass wir `x` überdeckt haben.
 
-### Shadowing and scopes
+### Überdeckung und Geltungsbereiche
 
-Like any binding, a binding that shadows another binding will go away at the
-end of a scope. Here’s an example program:
+Wie jede Bindung, verschwindet eine Bindung, die eine andere überdeckt, am Ende eines Geltungsbereiches. Hier ein Beispielprogramm:
 
 ```rust
 fn main() {
@@ -626,7 +540,7 @@ fn main() {
 }
 ```
 
-If we run this example, we can see the shadow appear and disappear:
+Wenn wir dieses Beispiel ausführen, können wir die Überdeckung erscheinen und verschwinden sehen:
 
 ```bash
 $ cargo run
